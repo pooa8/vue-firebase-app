@@ -1,9 +1,9 @@
 <template>
   <div class="signUp">
-    <h3>Happy with us !</h3>
-    <input v-model="name" type="text" placeholder="Name"><br/>
-    <input v-model="email" type="text" placeholder="E-mail"><br/>
-    <input v-model="password" type="password" placeholder="Password" maxlength="16" @blur="pwValid"><br/>
+    <h3>Sign up to Pikku</h3>
+    <input v-model="name" type="text" placeholder="NAME"><br/>
+    <input v-model="email" type="text" placeholder="EMAIL ADDRESS"><br/>
+    <input v-model="password" type="password" placeholder="PASSWORD" maxlength="16" @blur="pwValid"><br/>
     <div v-if="!pwValidFlag">대문자/소문자/숫자 각 1자리를 포함한 8자~16자 비밀번호를 설정해주세요.</div>
     <button v-on:click="join">Join</button>
   </div>
@@ -25,28 +25,27 @@ export default {
   methods: {
     join() {
       if (this.name == "") {
-        alert("이름을 입력해주세요.")
+        alert("Please enter a name.")
         return
       }
       else if (this.email == "") {
-        alert("이메일을 입력해주세요.")
+        alert("Please enter a email.")
         return
       }
       else if (this.password == null) {
-        alert("비밀번호를 입력해주세요.")
+        alert("Please enter a password.")
         return
       }
       if (!this.pwValidFlag) {
-        alert("비밀번호를 확인해주세요.")
+        alert("Please enter a valid password.")
         return
       }
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
         function (user) {
           alert('Your account has been created !')
-          //this.$router.replace('/login')
         },
         function (err) {
-          alert('Oops. ' + err.message)
+          alert('Whoops! ' + err.message)
         }
       );
     },

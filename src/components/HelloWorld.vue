@@ -2,15 +2,25 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h3>Hello everybody</h3>
+    <button v-on:click="logout">Log out</button>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase';
+
 export default {
-  name: 'HelloWorld',
+  name: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    logout: function() {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('login')
+      })
     }
   }
 }

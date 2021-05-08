@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
+
 import SignUp from '@/components/SignUp'
 import Login from '@/components/Login'
 import HelloWorld from '@/components/HelloWorld'
@@ -11,9 +11,12 @@ export default new Router({
   mode: "history",
   routes: [
     {
+      path: '*',
+      redirect: '/login'
+    },
+    {
       path: '/',
-      name: 'Home',
-      component: Home
+      redirect: '/login'
     },
     {
       path: '/signUp',
@@ -28,7 +31,10 @@ export default new Router({
     {
       path: '/hello',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })

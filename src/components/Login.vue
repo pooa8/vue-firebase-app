@@ -1,23 +1,35 @@
 <template>
   <div class="login">
-    <h3>Welcome !</h3>
-    <input type="text" placeholder="E-mail" ><br/>
-    <input type="password" placeholder="Password"><br/>
+    <h3>Log In to Pikku</h3>
+    <input v-model="email" type="text" placeholder="EMAIL ADDRESS" ><br/>
+    <input v-model="password" type="password" placeholder="PASSWORD"><br/>
     <br/>
-    <button v-on:click="login">Login</button>
-    <p>If You want to join, <router-link to="/signUp">Sign Up!</router-link></p>
+    <button v-on:click="login">LOG IN</button>
+    <p>Not a member? <router-link to="/signUp">Sign up!</router-link></p>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
   name: 'login',
   data() {
-    return {}
+    return {
+      email: '',
+      password: ''
+    }
   },
   methods: {
     login() {
-      this.$router.replace('hello')
+      firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
+        (user) => {
+          this.$router.replace('hello')
+        },
+        (err) => {
+          alert('Whoops! Unable to log in. ' + err.message)
+        }
+      );
     }
   }
 }

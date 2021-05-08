@@ -1,11 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link>
       <router-link to="/login">Login</router-link>
       <router-link to="/signUp">Sign Up</router-link>
     </nav>
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
 </template>
