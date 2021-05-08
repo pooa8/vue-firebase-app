@@ -1,45 +1,29 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h3>Hello everybody</h3>
-    <button v-on:click="logout">Log out</button>
+    <h2>hello</h2>
+  <button v-on:click="logout" type="button" class="btn btn-info">LOGOUT</button>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 export default {
-  name: 'hello',
-  data () {
+  name: 'logout',
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   },
   methods: {
-    logout: function() {
+    logout() {
       firebase.auth().signOut().then(() => {
-        this.$router.replace('login')
+        this.$router.replace('index')
       })
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style>
+
 </style>

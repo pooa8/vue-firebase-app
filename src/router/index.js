@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Index from '@/components/Index'
 import SignUp from '@/components/SignUp'
 import Login from '@/components/Login'
 import HelloWorld from '@/components/HelloWorld'
@@ -12,11 +13,16 @@ export default new Router({
   routes: [
     {
       path: '*',
-      redirect: '/login'
+      redirect: '/index'
     },
     {
       path: '/',
-      redirect: '/login'
+      redirect: '/index'
+    },
+    {
+      path: '/index',
+      name: 'Index',
+      component: Index
     },
     {
       path: '/signUp',

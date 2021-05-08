@@ -1,10 +1,16 @@
 <template>
   <div class="login">
-    <h3>Log In to Pikku</h3>
-    <input v-model="email" type="text" placeholder="EMAIL ADDRESS" ><br/>
-    <input v-model="password" type="password" placeholder="PASSWORD"><br/>
+    <h2>Log in to Pikku</h2>
+    <div class="form-floating mb-3">
+      <input v-model="email" type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+      <label for="floatingEmail">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input v-model="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" maxlength="16">
+      <label for="floatingPassword">Password</label>
+    </div>
     <br/>
-    <button v-on:click="login">LOG IN</button>
+    <button v-on:click="login" type="button" class="btn btn-info">LOG IN</button>
     <p>Not a member? <router-link to="/signUp">Sign up!</router-link></p>
   </div>
 </template>
@@ -38,10 +44,10 @@ export default {
 <style>
 .login {
   margin-top: 40px;
+  text-align: center;
+  vertical-align: middle;
 }
 input {
-  margin: 5px 0;
-  width: 20%;
   cursor: pointer;
 }
 </style>

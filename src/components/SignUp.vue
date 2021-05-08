@@ -1,11 +1,26 @@
 <template>
   <div class="signUp">
-    <h3>Sign up to Pikku</h3>
-    <input v-model="name" type="text" placeholder="NAME"><br/>
-    <input v-model="email" type="text" placeholder="EMAIL ADDRESS"><br/>
-    <input v-model="password" type="password" placeholder="PASSWORD" maxlength="16" @blur="pwValid"><br/>
-    <div v-if="!pwValidFlag">대문자/소문자/숫자 각 1자리를 포함한 8자~16자 비밀번호를 설정해주세요.</div>
-    <button v-on:click="join">Join</button>
+    <h2>Hello Pikku !</h2>
+    <div class="form-floating">
+      <input v-model="name" type="text" class="form-control" id="floatingName" placeholder="Name">
+      <label for="floatingName">Name</label>
+    </div>
+    <br/>
+    <div class="form-floating mb-3">
+      <input v-model="email" type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+      <label for="floatingEmail">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input v-model="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" maxlength="16" @blur="pwValid">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <br/>
+    <div v-if="!pwValidFlag" class="alert alert-dismissible alert-danger">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <strong>대문자/소문자/숫자 1개 이상</strong> 포함한 8자~16자 비밀번호를 설정해주세요.
+    </div>
+    <button v-on:click="join" type="button" class="btn btn-success">JOIN</button>
+    <p>Or <router-link to="/login">Login</router-link></p>
   </div>
 </template>
 
@@ -66,11 +81,7 @@ export default {
 
 <style>
 .signUp {
-  margin-top: 40px;
-}
-input {
-  margin: 5px 0;
-  width: 20%;
-  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
 }
 </style>
